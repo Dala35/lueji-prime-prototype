@@ -88,11 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const encodedAlmacode = encodeURIComponent(almacode);
         console.log(`LUEJI processando AlmaCode: ${almacode}`);
 
+        // Simula a animação de processamento
+        document.body.style.backgroundColor = 'var(--gradient-color-1)';
+        document.body.style.transition = 'background-color 2s ease';
+
         // Simula o tempo de processamento
         setTimeout(() => {
             alert(`LUEJI diz: "Compreendido, Criador. O seu AlmaCode ressoa com a nossa intenção."`);
             // Simula a interação com a visualização
             highlightNodesAndLinks(encodedAlmacode);
+            document.body.style.backgroundColor = '#0d0d1f';
         }, 2000);
     }
 
