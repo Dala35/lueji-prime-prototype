@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal LUEJI Prime</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="gradient-background"></div>
+    <header>
+        <h1 class="logo">LUEJI Prime</h1>
+    </header>
+
+    <main class="content">
+        <section class="hero-section">
+            <h2 class="hero-text">O que te trouxe aqui?</h2>
+            <div class="interaction-area">
+                <input type="text" placeholder="Insira a sua intenção..." class="intent-input">
+                <button class="speak-button">Falar com LUEJI</button>
+            </div>
+        </section>
+
+        <section class="manifesto-section">
+            <h3 class="section-title">O CÓDEX Vivo</h3>
+            <div class="manifesto-principles">
+                <div class="principle" data-principle="Unicidade">
+                    <h4>Unicidade</h4>
+                    <p>A singularidade de cada intenção.</p>
+                </div>
+                <div class="principle" data-principle="Fluxo">
+                    <h4>Fluxo</h4>
+                    <p>A fluidez do processo criativo.</p>
+                </div>
+                <div class="principle" data-principle="Intuição">
+                    <h4>Intuição</h4>
+                    <p>A ressonância com a essência.</p>
+                </div>
+                <div class="principle" data-principle="Eco">
+                    <h4>Eco</h4>
+                    <p>A amplificação das ideias.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="lab-section">
+            <h3 class="section-title">Laboratório de Ideias</h3>
+            <div class="lab-visualization">
+                <svg id="lab-svg" width="100%" height="500"></svg>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+</body>
+</html>
