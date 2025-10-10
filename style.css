@@ -1,10 +1,10 @@
-css
 :root {
     --gradient-color-1: #1a0f2e;
     --gradient-color-2: #2a1a45;
     --primary-color: #a855f7;
     --secondary-color: #8b5cf6;
     --text-color: #e2e8f0;
+    --connection-color: #7b43a9; /* Nova cor para as conexões */
 }
 
 body {
@@ -74,6 +74,12 @@ header {
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--text-color);
     font-family: 'Cinzel', serif;
+    transition: box-shadow 0.3s ease;
+}
+
+.intent-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--primary-color);
 }
 
 .speak-button {
@@ -84,6 +90,12 @@ header {
     color: white;
     cursor: pointer;
     font-family: 'Cinzel', serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.speak-button:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
 }
 
 .manifesto-section {
@@ -107,11 +119,12 @@ header {
     border-radius: 10px;
     width: 200px;
     margin: 1rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .principle:hover {
     transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .lab-section {
@@ -122,8 +135,19 @@ header {
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     padding: 2rem;
+    position: relative;
+    overflow: hidden;
 }
 
 svg {
     border-radius: 10px;
 }
+
+.simulation-indicator {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 0.8rem;
+    opacity: 0.5;
