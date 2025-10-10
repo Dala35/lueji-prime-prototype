@@ -1,11 +1,13 @@
-javascript
 document.addEventListener('DOMContentLoaded', () => {
     const svg = d3.select("#lab-svg");
-    const width = svg.node().getBoundingClientRect().width;
-    const height = svg.node().getBoundingClientRect().height;
+    const labSection = d3.select(".lab-visualization");
+    const width = labSection.node().getBoundingClientRect().width;
+    const height = labSection.node().getBoundingClientRect().height;
+    const intentInput = document.querySelector('.intent-input');
+    const speakButton = document.querySelector('.speak-button');
 
     const nodesData = [
-        { id: "Intenção" },
+        { id: "Intenção", fx: width / 2, fy: 50 },
         { id: "AlmaCode" },
         { id: "CÓDEX" },
         { id: "Manifestação" },
@@ -33,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .force("center", d3.forceCenter(width / 2, height / 2));
 
     const link = svg.append("g")
-        .attr("stroke", "#999")
+        .attr("stroke", "var(--connection-color)")
         .attr("stroke-opacity", 0.6)
         .selectAll("line")
         .data(linksData)
@@ -80,6 +82,51 @@ document.addEventListener('DOMContentLoaded', () => {
             .attr("y", d => d.y + 5);
     });
 
+    // Simulação da IA
+    function simulateLuejiResponse(almacode) {
+        if (!almacode) return;
+        const encodedAlmacode = encodeURIComponent(almacode);
+        console.log(`LUEJI processando AlmaCode: ${almacode}`);
+
+        // Simula o tempo de processamento
+        setTimeout(() => {
+            alert(`LUEJI diz: "Compreendido, Criador. O seu AlmaCode ressoa com a nossa intenção."`);
+            // Simula a interação com a visualização
+            highlightNodesAndLinks(encodedAlmacode);
+        }, 2000);
+    }
+
+    function highlightNodesAndLinks(almacode) {
+        // Simulação de realce de nós
+        const relevantNode = nodesData.find(d => almacode.includes(d.id.toLowerCase()));
+        if (relevantNode) {
+            svg.selectAll("circle")
+                .filter(d => d.id === relevantNode.id)
+                .transition()
+                .duration(500)
+                .attr("fill", "red")
+                .attr("r", 20)
+                .transition()
+                .duration(500)
+                .attr("fill", "var(--primary-color)")
+                .attr("r", 15);
+        }
+    }
+
+    speakButton.addEventListener('click', () => {
+        simulateLuejiResponse(intentInput.value);
+    });
+    
+    // Animação para os princípios do Manifesto
+    d3.selectAll(".principle").on("mouseover", function() {
+        const principleName = d3.select(this).attr("data-principle");
+        label.filter(d => d.id === principleName).transition().style("font-size", "16px");
+    }).on("mouseout", function() {
+        const principleName = d3.select(this).attr("data-principle");
+        label.filter(d => d.id === principleName).transition().style("font-size", "12px");
+    });
+    
+    // Eventos de arrastar para o Laboratório de Ideias
     function dragstarted(event, d) {
         if (!event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
