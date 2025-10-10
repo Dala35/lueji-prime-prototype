@@ -4,7 +4,7 @@
     --primary-color: #a855f7;
     --secondary-color: #8b5cf6;
     --text-color: #e2e8f0;
-    --connection-color: #7b43a9; /* Nova cor para as conexões */
+    --connection-color: #7b43a9;
 }
 
 body {
@@ -13,6 +13,7 @@ body {
     color: var(--text-color);
     background-color: #0d0d1f;
     overflow-x: hidden;
+    transition: background-color 0.5s ease;
 }
 
 .gradient-background {
@@ -120,6 +121,13 @@ header {
     width: 200px;
     margin: 1rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: subtle-pulse 5s infinite ease-in-out;
+}
+
+@keyframes subtle-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
 }
 
 .principle:hover {
@@ -151,3 +159,4 @@ svg {
     color: #fff;
     font-size: 0.8rem;
     opacity: 0.5;
+}
